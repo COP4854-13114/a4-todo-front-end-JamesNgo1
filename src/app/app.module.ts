@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { SomethingComponent } from './view/something/something.component';
 import { NiceComponent } from './component/nice/nice.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -24,7 +25,8 @@ import { NiceComponent } from './component/nice/nice.component';
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
 
 
   ],
