@@ -1,1 +1,14 @@
 <p>home works!</p>
+<p>current word is :</p>
+<p>{{currentBlog}}</p>
+<!--ngfor -->
+<span *ngFor="let blog of blogArray">
+    <p>{{blog}}</p>
+</span>
+
+<input type="text" [(ngModel)]="currentBlog"/>
+
+
+<!-- test an event -->
+
+<button (click)="addBlog()">add to the blog array</button>

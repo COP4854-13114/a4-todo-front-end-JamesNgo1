@@ -13,6 +13,8 @@ import { HomeComponent } from './view/home/home.component';
 import { RegisterComponent } from './view/register/register.component';
 import { LoginComponent } from './view/login/login.component';
 import { MylistComponent } from './view/mylist/mylist.component';
+import { FormsModule } from '@angular/forms';
+//import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,7 +26,7 @@ import { MylistComponent } from './view/mylist/mylist.component';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    MylistComponent
+    MylistComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { MylistComponent } from './view/mylist/mylist.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
 
 
   ],
