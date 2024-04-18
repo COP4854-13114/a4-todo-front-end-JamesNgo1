@@ -7,9 +7,12 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { SomethingComponent } from './view/something/something.component';
 import { NiceComponent } from './component/nice/nice.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { HomeComponent } from './view/home/home.component';
+import { RegisterComponent } from './view/register/register.component';
+import { LoginComponent } from './view/login/login.component';
+import { MylistComponent } from './view/mylist/mylist.component';
 
 
 
@@ -17,8 +20,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   declarations: [
     AppComponent,
     NavbarComponent,
-    SomethingComponent,
-    NiceComponent
+    NiceComponent,
+    HomeComponent,
+    RegisterComponent,
+    LoginComponent,
+    MylistComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,29 @@
+<!--
+
+    add a router link that keeps the intergrity of a SPA 
+
+    which replace current render component with another ocmponent 
+
+
+-->
+
+
 <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>TODO LIST</span>
     <span class="example-spacer"></span>
-    <button matTooltip="Click here to go home" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button routerLink="" matTooltip="Click here to go home" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>home</mat-icon>
     </button>
-    <button matTooltip="Click here to login in/out" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button routerLink="loginout" matTooltip="Click here to login in/out" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>login</mat-icon>
     </button>
-    <button matTooltip="Click here to register an account" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button routerLink="register" matTooltip="Click here to register an account" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon> how_to_reg</mat-icon>
       </button>
-      <button matTooltip="Click here to view your list(s)" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <button routerLink="mylist" matTooltip="Click here to view your list(s)" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon><span class="material-symbols-outlined">
            view_list
             </span></mat-icon>
