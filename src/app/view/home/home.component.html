@@ -2,7 +2,9 @@
 <p>current word is :</p>
 <p>{{currentBlog}}</p>
 <!--ngfor -->
-
+<span *ngFor="let blog of blogArray">
+    <p>{{blog}}</p>
+</span>
 <input type="text" [(ngModel)]="currentBlog"/>
 
 
