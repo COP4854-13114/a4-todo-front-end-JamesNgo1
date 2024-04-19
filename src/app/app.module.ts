@@ -14,7 +14,8 @@ import { RegisterComponent } from './view/register/register.component';
 import { LoginComponent } from './view/login/login.component';
 import { MylistComponent } from './view/mylist/mylist.component';
 import { FormsModule } from '@angular/forms';
-//import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AddblogComponent } from './view/addblog/addblog.component';
 
 
 
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     LoginComponent,
     MylistComponent,
+    AddblogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
 
   ],

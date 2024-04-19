@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TodoListsService } from '../../services/todo-lists.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,16 +24,23 @@ export class HomeComponent implements OnInit{
   addBlog(){
     this.todoService.addTodoList(this.currentBlog);
     this.currentBlog = "";
+    this.router.navigate(['okay']);
+
   }
 
-  constructor(private todoService:TodoListsService){
+  /*
+  goes figure out where blogger service live and hand me the same copy 
+  */
+  constructor(private todoService:TodoListsService , private httpClient:HttpClient, private router:Router){
 
   }
   
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
+    //on the component show it would render it 
     console.log("home compoent");
+    console.log("on the inint");
     this.blogArray = this.todoService.getTodoList();
+    
     
   }
   ngOnDestroy(): void {
