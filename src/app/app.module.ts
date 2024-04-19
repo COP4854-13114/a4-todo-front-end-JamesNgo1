@@ -16,6 +16,7 @@ import { MylistComponent } from './view/mylist/mylist.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddblogComponent } from './view/addblog/addblog.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -38,7 +39,8 @@ import { AddblogComponent } from './view/addblog/addblog.component';
     MatButtonModule,
     MatTooltipModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule
 
 
   ],

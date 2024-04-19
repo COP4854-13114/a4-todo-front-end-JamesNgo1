@@ -26,7 +26,7 @@ export class TodoListsService {
 
     for(let row of data){
       this.todoLists.push(row.title);
-      console.log(row.title);
+      console.log(row);
     }
       
    });

@@ -1,9 +1,12 @@
+<mat-progress-bar *ngIf="todoListArray.length == 0" mode="indeterminate"></mat-progress-bar>
+
 <p>home works!</p>
 <p>current word is :</p>
 <p>{{currentBlog}}</p>
 <!--ngfor -->
-<span *ngFor="let blog of blogArray">
+<span *ngFor="let blog of todoListArray">
     <p>{{blog}}</p>
+    <hr>
 </span>
 <input type="text" [(ngModel)]="currentBlog"/>
 

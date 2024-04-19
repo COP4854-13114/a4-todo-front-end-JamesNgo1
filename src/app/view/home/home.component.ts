@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
  */
 export class HomeComponent implements OnInit{
   //constructor(private http: HttpClient){}
-  blogArray:String[] = [];
+  todoListArray:String[] = [];
 
   currentBlog:string = "";
 
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit{
     //on the component show it would render it 
     console.log("home compoent");
     console.log("on the inint");
-    this.blogArray = this.todoService.getTodoList();
+    this.todoListArray = this.todoService.getTodoList();
     
     
   }
