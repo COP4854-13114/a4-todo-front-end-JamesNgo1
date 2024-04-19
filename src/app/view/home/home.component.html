@@ -5,7 +5,10 @@
 <p>{{currentBlog}}</p>
 <!--ngfor -->
 <span *ngFor="let blog of todoListArray">
-    <p>{{blog}}</p>
+    <mat-card>
+        <mat-card-content>{{blog}}</mat-card-content>
+      </mat-card>
+      
     <hr>
 </span>
 <input type="text" [(ngModel)]="currentBlog"/>
