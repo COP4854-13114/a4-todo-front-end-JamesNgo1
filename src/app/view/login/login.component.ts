@@ -30,9 +30,13 @@ export class LoginComponent {
 
 
     if(this.username != null && this.password != null){
-      let x = this.loginService.login(this.username,this.password);
+      let x = await this.loginService.login(this.username,this.password);
       console.log("printing data");
-      console.log(x);
+      if(x){
+        console.log(x);
+        alert("exist");
+      }
+      else alert("does not exist");
       
 
     }

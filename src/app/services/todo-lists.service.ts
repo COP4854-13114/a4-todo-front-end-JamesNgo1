@@ -97,6 +97,7 @@ export class TodoListsService {
       });
   
       //what kind of object you wajt to get back
+      // url , then body just put stuff there , and headers include auth
       let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/user/login',data,{headers}));
       return response;
       
