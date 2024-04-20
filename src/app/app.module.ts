@@ -26,6 +26,7 @@ import { NoopAnimationPlayer } from '@angular/animations';
 import { ɵBrowserAnimationBuilder } from '@angular/animations';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -57,7 +58,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
    
     
    

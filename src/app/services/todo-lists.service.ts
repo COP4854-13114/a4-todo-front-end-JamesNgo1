@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class TodoListsService {
   //lets have an empty array and declare our http client
   //use http client to communicate the backend
   //aval to service to use 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient:HttpClient, private snackBar:MatSnackBar) {
     
    }
 
@@ -31,13 +33,11 @@ export class TodoListsService {
       
    });
 
-
-
-
+  
     console.log("this is the todolist");
     console.log(this.todoLists);
     return this.todoLists;
-   }
+   }//end of getTodoList method
 
     
     //return this.todoLists;
@@ -46,5 +46,49 @@ export class TodoListsService {
   addTodoList(todoList:string):void{
     this.todoLists.unshift(todoList);
   }
+
+  /**
+   * create user method
+   */
+  async createUser(email:string,password:string,name:string){
+    let data = {
+      email:email,
+      password:password,
+      name:name
+    }
+
+    //await and async 
+
+    //creating a promise 
+    //uses rjx make request and reponse or first response back
+    //get back tehe option
+    try {
+      let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/user/',data));
+      console.log("hello world test");
+      console.log(response);
+
+      //second paramter is going to be description of what is in the button to close
+      this.snackBar.open('account created','close');
+      
+      return true;
+      
+    } catch (error:any) {
+      this.snackBar.open('account is already created','close');
+      console.log(error.error.message)
+      return false;
+      
+    }
+    
+   
+
+
+
+
+
+  }
+
+
+
+
 }
 
