@@ -18,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddblogComponent } from './view/addblog/addblog.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -44,7 +48,11 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     HttpClientModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule
 
 
   ],
