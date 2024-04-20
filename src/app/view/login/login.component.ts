@@ -25,18 +25,22 @@ export class LoginComponent {
 
 
   async login(){
-    console.log(this.username);
-    console.log(this.password);
-
 
     if(this.username != null && this.password != null){
+
+      //either they key or false
+      //token : key to allow who and what we have access to 
+      
       let x = await this.loginService.login(this.username,this.password);
-      console.log("printing data");
-      if(x){
+      if(x != false){
+        console.log("login in!");
         console.log(x);
-        alert("exist");
+        
       }
-      else alert("does not exist");
+      else{
+        console.log("error");
+
+      }
       
 
     }

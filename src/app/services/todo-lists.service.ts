@@ -1,8 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, of } from 'rxjs';
+import { UserToken } from '../model/user-token';
+import { EventEmitter, Output } from '@angular/core';
+import { userInfo } from '../model/userinfo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +14,15 @@ import { firstValueFrom } from 'rxjs';
 export class TodoListsService {
   //lives outside of any copmonets using it
   todoLists:string[] = [];
+  token:UserToken | null = null;
+  userLoggedIn: EventEmitter<string> = new EventEmitter<string>();
+
+
+
+  //event emitter to dynamically show the name of the user when they first login 
+  
+
+
 
 
   //lets have an empty array and declare our http client
@@ -18,6 +31,15 @@ export class TodoListsService {
   constructor(private httpClient:HttpClient, private snackBar:MatSnackBar, private router:Router) {
     
    }
+
+
+
+
+
+
+
+
+
 
 
    //replace with call to the end point now got http client 
@@ -84,6 +106,20 @@ export class TodoListsService {
     }
   } //end of method
 
+
+
+
+
+
+
+
+/**
+ * Method to login the user with their credentials
+ * returns a token for htem to use
+ * @param username 
+ * @param password 
+ * @returns 
+ */
   async login(username:string,password:string){
     let data = {
       username:username,
@@ -98,11 +134,16 @@ export class TodoListsService {
   
       //what kind of object you wajt to get back
       // url , then body just put stuff there , and headers include auth
-      let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/user/login',data,{headers}));
+      let response = await firstValueFrom(this.httpClient.post<UserToken>('https://unfwfspring2024.azurewebsites.net/user/login',data,{headers}));
+      this.token = response;
+      localStorage.setItem('currentToken',JSON.stringify(response));
+      this.userLoggedIn.emit(this.token.token);
+      
       return response;
       
     } catch (error) {
-      return null;
+      this.snackBar.open('login incorrect','close');
+      return false;
       
     }
 
@@ -111,6 +152,34 @@ export class TodoListsService {
     //pretend null so entire method is asyc 
     //of(null) to an observable
   } //end of login method
+
+
+   async getUserInfo(token:string){
+
+    //use the api request to get the user info with their token
+
+    //the response should be with the userinfo format 
+
+    //invoke through the nabar that is listenning that would emit and change var name
+
+    try {
+      let userInfo = await firstValueFrom(this.httpClient.get<userInfo>('https://unfwfspring2024.azurewebsites.net/user/',{headers:{'Authorization': `Bearer ${token}`}}));
+      return userInfo;
+
+    } catch (error) {
+      this.snackBar.open('cannnot get login information','close');
+      return firstValueFrom(of(null));
+      
+    }
+  }
+
+
+
+  
+
+
+
+
 
 
 

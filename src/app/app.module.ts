@@ -27,6 +27,7 @@ import { ɵBrowserAnimationBuilder } from '@angular/animations';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EventEmitter } from '@angular/core';
 
 
 
@@ -59,7 +60,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+  
+  
    
     
    
