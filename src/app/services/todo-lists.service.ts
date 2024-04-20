@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
@@ -72,7 +72,7 @@ export class TodoListsService {
       this.snackBar.open('account created','close');
 
       //redirect and append the inoformation
-      this.router.navigate(['loginout',{username:email,password:password}])
+      this.router.navigate(['loginout',{username:email,password:password,name:name}])
       
       return true;
       
@@ -82,14 +82,34 @@ export class TodoListsService {
       return false;
       
     }
+  } //end of method
+
+  async login(username:string,password:string){
+    let data = {
+      username:username,
+      password:password
+    }
+
+    try {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(username + ':' + password)
+      });
+  
+      //what kind of object you wajt to get back
+      let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/user/login',data,{headers}));
+      return response;
+      
+    } catch (error) {
+      return null;
+      
+    }
+
     
-   
 
-
-
-
-
-  }
+    //pretend null so entire method is asyc 
+    //of(null) to an observable
+  } //end of login method
 
 
 

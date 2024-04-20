@@ -1,4 +1,7 @@
 <p>login works!</p>
+<p>welcome {{name}}</p>
+
+<!--two way binidng that would be passed in by the gresgietr view-->
 <div>
     <label>username</label>
     <input type="text" [(ngModel)]="username">
@@ -8,6 +11,8 @@
     <label>password</label>
     <input type="password" [(ngModel)]="password">
 </div>
+
+<button (click)="login()">Login</button>
 
 
 
