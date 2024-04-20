@@ -22,7 +22,9 @@ const routes: Routes = [
   },
   {
     path:'mylist',
+    canActivate:[noauthGuard],
     component:MylistComponent
+    
   },
   {
     path:'addBlog',
