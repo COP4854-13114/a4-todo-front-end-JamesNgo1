@@ -16,6 +16,7 @@
     
     <mat-card-content>
 
+        
         <div class="register-form">
 
             <mat-form-field class="example-full-width">
@@ -23,12 +24,11 @@
                 <input type="email" matInput [formControl]="emailFormControl" 
                        placeholder="Ex. jam@example.com">
                 
-                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-                  <mat-error>Please enter a valid email address</mat-error>
-                }
-                @if (emailFormControl.hasError('required')) {
-                  <mat-error>Email is <strong>required</strong></mat-error>
-                }
+                <!--ng if directive-->
+                <mat-error *ngIf="(emailFormControl.hasError('email') && !emailFormControl.hasError('required'))">Please enter a valid email address</mat-error>
+            
+                <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+                
               </mat-form-field>
 
 
@@ -65,7 +65,8 @@
      
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="createUser()">Register</button>
+        <p *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('required') || passwordFormControl.hasError('required') || nameFormControl.hasError('required')">register button will appear once you fill all validated input fields</p>
+        <button *ngIf="!emailFormControl.hasError('email') && !emailFormControl.hasError('required') && !passwordFormControl.hasError('required') && !nameFormControl.hasError('required')" mat-raised-button (click)="createUser()">Register</button>
     </mat-card-actions>
   </mat-card>
   

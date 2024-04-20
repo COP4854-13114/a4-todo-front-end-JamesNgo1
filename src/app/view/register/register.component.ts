@@ -9,6 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class RegisterComponent {
   //form control like default values validors built in for the form control
   //default value for the email for an example 
+  //reative forms
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
   nameFormControl = new FormControl('', [Validators.required]);
