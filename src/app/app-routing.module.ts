@@ -24,7 +24,7 @@ const routes: Routes = [
     component:MylistComponent
   },
   {
-    path:'okay',
+    path:'addBlog',
     component:AddblogComponent
   }
   
