@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Route, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class TodoListsService {
   //lets have an empty array and declare our http client
   //use http client to communicate the backend
   //aval to service to use 
-  constructor(private httpClient:HttpClient, private snackBar:MatSnackBar) {
+  constructor(private httpClient:HttpClient, private snackBar:MatSnackBar, private router:Router) {
     
    }
 
@@ -69,6 +70,9 @@ export class TodoListsService {
 
       //second paramter is going to be description of what is in the button to close
       this.snackBar.open('account created','close');
+
+      //redirect and append the inoformation
+      this.router.navigate(['loginout',{username:email,password:password}])
       
       return true;
       
