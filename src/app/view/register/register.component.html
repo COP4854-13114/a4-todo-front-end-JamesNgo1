@@ -15,20 +15,53 @@
     </mat-card-header>
     
     <mat-card-content>
-        <mat-form-field class="example-full-width">
+
+        <div class="register-form">
+
             <mat-form-field class="example-full-width">
-                <mat-label>Favorite food</mat-label>
-                <input matInput placeholder="Ex. Pizza" value="Sushi">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" 
+                       placeholder="Ex. jam@example.com">
+                
+                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                  <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                  <mat-error>Email is <strong>required</strong></mat-error>
+                }
               </mat-form-field>
+
+
               <mat-form-field class="example-full-width">
-                <mat-label>Favorite food</mat-label>
-                <input matInput placeholder="Ex. Pizza" value="Sushi">
+                <mat-label>Password</mat-label>
+                <input type="email" matInput [formControl]="passwordFormControl" 
+                       placeholder="Ex. jam@example.com">
+                
+                @if (passwordFormControl.hasError('required')) {
+                  <mat-error>Password is <strong>required</strong></mat-error>
+                }
+               
               </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <mat-label>Favorite food</mat-label>
-                <input matInput placeholder="Ex. Pizza" value="Sushi">
-              </mat-form-field>
+
+             
+
+              
+          
+
+          
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input type="email" matInput [formControl]="nameFormControl">
+            
+            @if (nameFormControl.hasError('required')) {
+              <mat-error>Name is <strong>required</strong></mat-error>
+            }
+           
           </mat-form-field>
+        </div>
+
+          
      
     </mat-card-content>
     <mat-card-actions>
