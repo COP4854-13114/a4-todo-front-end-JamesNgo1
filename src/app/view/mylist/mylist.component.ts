@@ -15,14 +15,29 @@ export class MylistComponent implements OnInit {
 
   //intilaize declare my array with 
   ngOnInit(): void {
-    this.userArray = this.mylistService.todoListsAllInfo;
+    this.userArray = this.mylistService.todoListAllInfoForUser;
     console.log("current id");
     console.log(this.mylistService.userInfoDataSet?.id);
 
+
+    //okay so the list would be public so some list could be false
+
     //change the array filter to only the ids by the user but have to add the share feature as well
     this.userArray = this.userArray.filter((todolist => todolist.created_by == this.mylistService.userInfoDataSet?.id))
-    console.log("starting personalized array");
-    console.log(this.userArray);
+    // console.log("starting personalized array");
+    // console.log(this.userArray);
+
+
+    console.log("calling function");
+    //this.mylistService.getBlogsForUser();
+
+
+
+
+
+    //replace above and include the new method that includes the get request with token
+
+    //this would then return the array and filter with created by with the userinfo data set 
     
   }
 

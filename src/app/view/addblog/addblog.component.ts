@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoListsService } from '../../services/todo-lists.service';
+import { TodoListInfo } from '../../model/todo-list-info';
 
 @Component({
   selector: 'app-addblog',
@@ -12,6 +13,8 @@ export class AddblogComponent implements OnInit {
   todoListPublicList:string = "";
 
   arr:string[] = [];
+
+  newArr:TodoListInfo[] = [];
 
   constructor(private addblogSerivce:TodoListsService){}
 
@@ -26,7 +29,7 @@ export class AddblogComponent implements OnInit {
     this.addblogSerivce.addTodoListPublic = this.todoListPublicList == "true" ? true : false;
 
 
-    
+
     this.addblogSerivce.addBlog();
 
 
@@ -37,7 +40,8 @@ export class AddblogComponent implements OnInit {
 
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
-    this.arr = this.addblogSerivce.getTodoList();
+    //this.arr 
+    this.newArr= this.addblogSerivce.getTodoList();
   }
 
 }

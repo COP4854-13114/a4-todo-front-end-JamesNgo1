@@ -17,6 +17,7 @@ export class TodoListsService {
   userInfoDataSet:userInfo|null = null;
   todoLists:string[] = [];
   todoListsAllInfo:TodoListInfo[] = [];
+  todoListAllInfoForUser:TodoListInfo[] = [];
   token:UserToken | null = null;
   userLoggedIn: EventEmitter<string> = new EventEmitter<string>();
 
@@ -50,7 +51,7 @@ export class TodoListsService {
 
 
    //replace with call to the end point now got http client 
-   getTodoList():string[]{
+   getTodoList():TodoListInfo[]{
     //sits in callback form server 
 
     //async
@@ -70,11 +71,16 @@ export class TodoListsService {
   
     console.log("this is the todolist");
     console.log(this.todoLists);
-    return this.todoLists;
+    //return this.todoLists;
+    return this.todoListsAllInfo;
+
+
+
+
    }//end of getTodoList method
 
     
-    //return this.todoLists;
+   
   
 
   addTodoList(todoList:string):void{
@@ -201,13 +207,68 @@ export class TodoListsService {
 
     let bodyRequest = {
       title:this.addTodoListTitle,
-      public:this.addTodoListPublic
+      public_list:this.addTodoListPublic
     }
 
     let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/todo/',bodyRequest,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
     console.log(response);
     return response;
+  }//END OF ADD BLOG
+
+
+  // make a new request that would actually get a user designed of their list
+  //get the list of a lpl public list but includes there information
+
+  async getBlogsForUser(){
+    //let array:TodoListInfo[];
+    // let response = await firstValueFrom(this.httpClient.get<TodoListInfo[]>('https://unfwfspring2024.azurewebsites.net/todo/',{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+    // console.log("printing users bloglist");
+    // console.log(response);
+
+    let response = await firstValueFrom(this.httpClient.get<TodoListInfo[]>('https://unfwfspring2024.azurewebsites.net/todo/', {headers: {'Authorization': `Bearer ${this.token?.token}`}}));
+  
+  console.log("printing users bloglist with a certain user");
+  
+  // Iterate over the array of objects in the response
+  for (let row of response) {
+      // Now 'row' represents each object in the array
+      this.todoListAllInfoForUser.push(row);
+      console.log(row); // Do whatever you want with each object
   }
+  console.log("object array");
+  console.log(this.todoListAllInfoForUser);
+  
+
+
+
+
+  //   console.log("get blog for the users");
+  //   let x =this.httpClient.get('https://unfwfspring2024.azurewebsites.net/todo/',{headers:{'Authorization': `Bearer ${this.token?.token}`}}).subscribe((data:any)=>{
+
+  //   for(let row of data){
+  //     // this.todoLists.push(row.title);
+  //     // console.log(row.created_by);
+
+  //     //hope to store the entire object
+  //     //this.todoListsAllInfo.push(row);
+  //     this.todoListAllInfoForUser.push(row);
+  //     console.log(row);
+  //   }
+  //   console.log("printing the arry in the ending");
+  //  console.log(this.todoListAllInfoForUser);
+
+      
+  //  });
+   
+    
+
+
+
+
+    
+  }
+
+
 
 
 

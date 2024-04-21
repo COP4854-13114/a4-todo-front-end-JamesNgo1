@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TodoListsService } from '../../services/todo-lists.service';
 import { Router } from '@angular/router';
+import { TodoListInfo } from '../../model/todo-list-info';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +19,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit{
   //constructor(private http: HttpClient){}
   todoListArray:String[] = [];
+
+  newArray:TodoListInfo[] = [];
 
   currentBlog:string = "";
 
@@ -39,7 +42,8 @@ export class HomeComponent implements OnInit{
     //on the component show it would render it 
     console.log("home compoent");
     console.log("on the inint");
-    this.todoListArray = this.todoService.getTodoList();
+    //this.todoListArray 
+    this.newArray= this.todoService.getTodoList();
     
     
   }

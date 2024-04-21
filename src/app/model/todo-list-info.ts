@@ -1,7 +1,7 @@
 export interface TodoListInfo {
+    id:number,
+    title:string,
     created_at:string,
     created_by:number,
-    id:number,
-    public_list:boolean,
-    title:string
+    public_list:boolean
 }

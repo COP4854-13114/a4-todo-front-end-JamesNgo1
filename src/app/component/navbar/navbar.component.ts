@@ -23,6 +23,14 @@ export class NavbarComponent implements OnInit {
         //add thise to the service to use to get certain list for the user
         this.navbarService.userInfoDataSet = data;
       });
+
+      
+      //possible addition to call on the mylist for the sign in user
+
+
+
+
+
     });
   }
 ;

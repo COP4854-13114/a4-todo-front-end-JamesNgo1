@@ -34,7 +34,13 @@ export class LoginComponent {
       let x = await this.loginService.login(this.username,this.password);
       if(x != false){
         console.log("login in!");
+
+        //x is the token
         console.log(x);
+
+        //possibly call on the get user information
+        this.loginService.getBlogsForUser();
+
         
       }
       else{
