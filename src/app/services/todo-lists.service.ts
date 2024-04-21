@@ -6,6 +6,7 @@ import { firstValueFrom, of } from 'rxjs';
 import { UserToken } from '../model/user-token';
 import { EventEmitter, Output } from '@angular/core';
 import { userInfo } from '../model/userinfo';
+import { TodoListInfo } from '../model/todo-list-info';
 
 
 @Injectable({
@@ -13,7 +14,9 @@ import { userInfo } from '../model/userinfo';
 })
 export class TodoListsService {
   //lives outside of any copmonets using it
+  userInfoDataSet:userInfo|null = null;
   todoLists:string[] = [];
+  todoListsAllInfo:TodoListInfo[] = [];
   token:UserToken | null = null;
   userLoggedIn: EventEmitter<string> = new EventEmitter<string>();
 
@@ -47,10 +50,14 @@ export class TodoListsService {
     //sits in callback form server 
 
     //async
-    this.httpClient.get('https://unfwfspring2024.azurewebsites.net/todo/').subscribe((data:any)=>{
+    let x =this.httpClient.get('https://unfwfspring2024.azurewebsites.net/todo/').subscribe((data:any)=>{
 
     for(let row of data){
       this.todoLists.push(row.title);
+      console.log(row.created_by);
+
+      //hope to store the entire object
+      this.todoListsAllInfo.push(row);
       console.log(row);
     }
       
@@ -154,6 +161,12 @@ export class TodoListsService {
   } //end of login method
 
 
+
+  /**
+   * note to self that the info is held here if you simply login
+   * @param token 
+   * @returns 
+   */
    async getUserInfo(token:string){
 
     //use the api request to get the user info with their token

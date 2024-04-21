@@ -15,7 +15,7 @@
     </button>
     <span>TODO LIST - - </span>
     <!--only show when the ngIf is not null-->
-    <span *ngIf="currentUserInfo">welcome - {{currentUserInfo?.name}}</span>
+    <span *ngIf="currentUserInfo">welcome - {{currentUserInfo?.name}} {{currentUserInfo?.id}}</span>
     <span class="example-spacer"></span>
     <button routerLink="" matTooltip="Click here to go home" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>home</mat-icon>

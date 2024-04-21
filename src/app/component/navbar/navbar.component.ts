@@ -17,6 +17,9 @@ export class NavbarComponent implements OnInit {
     this.navbarService.userLoggedIn.subscribe((UserToken:string)=>{
       this.navbarService.getUserInfo(UserToken).then((data:userInfo|null)=>{
         this.currentUserInfo = data;
+
+        //add thise to the service to use to get certain list for the user
+        this.navbarService.userInfoDataSet = data;
       });
     });
   }

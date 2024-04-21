@@ -1,1 +1,28 @@
 <p>mylist works!</p>
+
+
+<!--
+    this would contain all the list 
+
+    we would use the id once we create the users
+
+    current issue as myList is depending on the fact that the home is loaded first as it would
+    then load to the current variable to the list
+
+
+    case 1: login -> calls the get user info to get the userid
+
+    case 2 register -> nm they have to login and we get it
+-->
+<span *ngFor="let todo of userArray">
+    <div>
+        <p>{{todo.created_at}}</p>
+        <p>{{todo.created_by}}</p>
+        <p>{{todo.id}}</p>
+        <p>{{todo.public_list}}</p>
+        <p>{{todo.title}}</p>
+    </div>
+    <br>
+    <hr>
+
+</span>
