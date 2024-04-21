@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit {
   constructor(private navbarService:TodoListsService){}
   
   ngOnInit(): void {
+
+    //take adv to get info of current user to know their user id and blog entries you are looking at 
     this.navbarService.userLoggedIn.subscribe((UserToken:string)=>{
       this.navbarService.getUserInfo(UserToken).then((data:userInfo|null)=>{
         this.currentUserInfo = data;

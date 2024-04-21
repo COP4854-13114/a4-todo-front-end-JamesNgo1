@@ -20,6 +20,10 @@ export class TodoListsService {
   token:UserToken | null = null;
   userLoggedIn: EventEmitter<string> = new EventEmitter<string>();
 
+  //below is variables for add blog request
+  addTodoListTitle:String = "";
+  addTodoListPublic:boolean = false;
+
 
 
   //event emitter to dynamically show the name of the user when they first login 
@@ -184,6 +188,25 @@ export class TodoListsService {
       return firstValueFrom(of(null));
       
     }
+  }//END OF METHOD
+
+
+
+
+  async addBlog(){
+    /*
+    have to add the request body 
+    set up variables that would be changed from the service of the adblog view
+    */
+
+    let bodyRequest = {
+      title:this.addTodoListTitle,
+      public:this.addTodoListPublic
+    }
+
+    let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/todo/',bodyRequest,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+    console.log(response);
+    return response;
   }
 
 

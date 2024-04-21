@@ -1,5 +1,23 @@
-<p>addblog works!</p>
-<p>adding a blog</p>
+<!--
+    Have to make the title required
+    might have to set default for the boolean
+-->
+
+<mat-form-field>
+    <mat-label>todo_list</mat-label>
+    <input matInput [(ngModel)]="todoListTitle">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Public List???</mat-label>
+    <mat-select [(ngModel)]="todoListPublicList">
+      <mat-option value="true">True</mat-option>
+      <mat-option value="false">False</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button (click)="addList()">Add List</button>
+
+  
 
 
 
