@@ -28,6 +28,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { EventEmitter } from '@angular/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogContentComponent } from './view/dialog-content/dialog-content.component';
 
 
 
@@ -43,6 +46,7 @@ import { EventEmitter } from '@angular/core';
     LoginComponent,
     MylistComponent,
     AddblogComponent,
+    DialogContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,8 @@ import { EventEmitter } from '@angular/core';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatCheckboxModule,
+    MatDialogModule
   
   
    

@@ -3,6 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TodoListsService } from '../../services/todo-lists.service';
 import { Router } from '@angular/router';
 import { TodoListInfo } from '../../model/todo-list-info';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,6 +26,17 @@ export class HomeComponent implements OnInit{
 
   currentBlog:string = "";
 
+  openDialog(blog: any): void {
+    const dialogRef = this.dialog.open(DialogContentComponent, {
+      width: '250px',
+      data: blog // Pass the blog data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   addBlog(){
     this.todoService.addTodoList(this.currentBlog);
     this.currentBlog = "";
@@ -34,10 +47,15 @@ export class HomeComponent implements OnInit{
   /*
   goes figure out where blogger service live and hand me the same copy 
   */
-  constructor(private todoService:TodoListsService , private httpClient:HttpClient, private router:Router){
+  constructor(private todoService:TodoListsService , private httpClient:HttpClient, private router:Router, private dialog: MatDialog){
 
   }
   
+ info(){
+  
+ }
+
+
   ngOnInit(): void {
     //on the component show it would render it 
     console.log("home compoent");

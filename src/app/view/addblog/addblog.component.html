@@ -3,17 +3,34 @@
     might have to set default for the boolean
 -->
 
-<mat-form-field>
+<!-- <mat-form-field>
     <mat-label>todo_list</mat-label>
     <input matInput [(ngModel)]="todoListTitle">
+  </mat-form-field> -->
+
+  <mat-form-field class="example-full-width">
+    <mat-label>todolist</mat-label>
+    <input type="text" matInput [formControl]="todoListFormControl" 
+           placeholder="todolist">
+    <mat-error *ngIf="todoListFormControl.hasError('required')">todolist name is <strong>required</strong></mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Public List???</mat-label>
-    <mat-select [(ngModel)]="todoListPublicList">
+
+
+
+  <mat-card>
+    <mat-card-content>public or private</mat-card-content>
+    <mat-checkbox class="example-margin" [(ngModel)]="checked">public todo list?</mat-checkbox>
+  </mat-card>
+  
+  <!-- <mat-form-field> -->
+    <!-- <mat-label>Public List???</mat-label>
+    <mat-select ngDefaultControl="false" [(ngModel)]="todoListPublicList">
       <mat-option value="true">True</mat-option>
       <mat-option value="false">False</mat-option>
-    </mat-select>
-  </mat-form-field>
+    </mat-select> -->
+
+    
+  <!-- </mat-form-field> -->
 
   <button (click)="addList()">Add List</button>
 
