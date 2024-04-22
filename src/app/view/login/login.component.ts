@@ -41,8 +41,10 @@ export class LoginComponent {
 
 
   async login(){
+    console.log(this.username);
+    console.log(this.password);
     
-    if(this.username != null && this.password != null){
+    if(this.username != undefined || "" && this.password != undefined || ""){
       this.spinner = true;
 
       //either they key or false
