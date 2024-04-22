@@ -1,8 +1,7 @@
 <mat-progress-bar *ngIf="newArray.length == 0" mode="indeterminate"></mat-progress-bar>
 
 <p>PUBLIC TODO LIST!</p>
-<p>current word is :</p>
-<p>{{currentBlog}}</p>
+
 <!--ngfor -->
 <span *ngFor="let blog of newArray">
     <mat-card>
@@ -12,7 +11,6 @@
         <mat-card-content>Public-list-status:{{blog.public_list}}</mat-card-content>
         <mat-card-content>Blog-id:{{blog.id}}</mat-card-content>
         <button mat-button (click)="openDialog(blog)">Open Todolist</button>
-        <button (click)="info()">press me for data </button>
       </mat-card> 
     <hr>
 </span>

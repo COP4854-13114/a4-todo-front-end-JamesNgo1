@@ -155,6 +155,7 @@ export class TodoListsService {
       this.token = response;
       localStorage.setItem('currentToken',JSON.stringify(response));
       this.userLoggedIn.emit(this.token.token);
+      this.snackBar.open('login correct','close');
       
       return response;
       
