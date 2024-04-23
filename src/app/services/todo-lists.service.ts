@@ -7,6 +7,7 @@ import { UserToken } from '../model/user-token';
 import { EventEmitter, Output } from '@angular/core';
 import { userInfo } from '../model/userinfo';
 import { TodoListInfo } from '../model/todo-list-info';
+import { BlogTodoLists } from '../model/blog-todo-lists';
 
 
 @Injectable({
@@ -19,6 +20,8 @@ export class TodoListsService {
   todoListsAllInfo:TodoListInfo[] = [];
   todoListAllInfoForUser:TodoListInfo[] = [];
   token:UserToken | null = null;
+
+  blogsFromATodoList:BlogTodoLists[] = [];
 
 
   
@@ -267,10 +270,27 @@ export class TodoListsService {
     
 
 
+  }//end of get user method
+
+  async getTodoItems(id:number){
+    this.blogsFromATodoList = [];
+
+    let response = await firstValueFrom(this.httpClient.get<BlogTodoLists[]>(`https://unfwfspring2024.azurewebsites.net/todo/${id}/items`,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+    console.log("attempt to print requets get");
+    console.log(response);
+
+    for(let row of response){
+      this.blogsFromATodoList.push(row);
+    }
+
+    console.log("this is the blog array");
+    console.log(this.blogsFromATodoList);
 
 
-    
+
+    //return response;
   }
+
 
 
 
