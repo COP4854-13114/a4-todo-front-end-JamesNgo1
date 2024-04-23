@@ -31,6 +31,7 @@ import { EventEmitter } from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogContentComponent } from './view/dialog-content/dialog-content.component';
+import { ItemsFromMyListComponent } from './view/items-from-my-list/items-from-my-list.component';
 
 
 
@@ -47,6 +48,7 @@ import { DialogContentComponent } from './view/dialog-content/dialog-content.com
     MylistComponent,
     AddblogComponent,
     DialogContentComponent,
+    ItemsFromMyListComponent
   ],
   imports: [
     BrowserModule,

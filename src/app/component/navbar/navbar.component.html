@@ -23,6 +23,18 @@
     <button routerLink="loginout" matTooltip="Click here to login in/out" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>login</mat-icon>
     </button>
+
+    <!--
+      display when they are login so 
+      if they are not login and we should not see this
+
+      might have to do an event emitter 
+    -->
+    <button  (click)="logout()" matTooltip="Click here to lougout" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon><span class="material-symbols-outlined">
+         logout
+          </span></mat-icon>
+    </button>
     <button routerLink="register" matTooltip="Click here to register an account" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon> how_to_reg</mat-icon>
       </button>

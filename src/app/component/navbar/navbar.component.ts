@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { userInfo } from '../../model/userinfo';
 import { TodoListsService } from '../../services/todo-lists.service';
 import { UserToken } from '../../model/user-token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,24 @@ import { UserToken } from '../../model/user-token';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  
+
+  loginIn:UserToken|null = this.navbarService.token;
 
   currentUserInfo:userInfo | null = null;
-  constructor(private navbarService:TodoListsService){}
+  constructor(private navbarService:TodoListsService,private router:Router){}
+
+  /**
+   * have a function that logouts so essential puts token as null
+   */
+  logout(){
+    this.navbarService.token = null;
+    console.log("logout");
+    this.router.navigate(['']);
+  }
+
+
+
   
   ngOnInit(): void {
 
@@ -22,6 +38,7 @@ export class NavbarComponent implements OnInit {
 
         //add thise to the service to use to get certain list for the user
         this.navbarService.userInfoDataSet = data;
+        
       });
 
       

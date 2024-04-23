@@ -19,6 +19,9 @@ export class TodoListsService {
   todoListsAllInfo:TodoListInfo[] = [];
   todoListAllInfoForUser:TodoListInfo[] = [];
   token:UserToken | null = null;
+
+
+  
   userLoggedIn: EventEmitter<string> = new EventEmitter<string>();
 
   //below is variables for add blog request

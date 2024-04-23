@@ -1,6 +1,12 @@
 <mat-progress-bar *ngIf="newArray.length == 0" mode="indeterminate"></mat-progress-bar>
 
 <p>PUBLIC TODO LIST!</p>
+<!-- <input type="text" [(ngModel)]="currentBlog"/> -->
+
+
+<!-- test an event -->
+
+<!-- <button (click)="addBlog()">add to the blog array</button> -->
 
 <!--ngfor -->
 <span *ngFor="let blog of newArray">
@@ -14,9 +20,3 @@
       </mat-card> 
     <hr>
 </span>
-<input type="text" [(ngModel)]="currentBlog"/>
-
-
-<!-- test an event -->
-
-<button (click)="addBlog()">add to the blog array</button>

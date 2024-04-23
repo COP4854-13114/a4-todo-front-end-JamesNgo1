@@ -54,6 +54,8 @@ export class LoginComponent {
       if(x != false){
         //x is the token
         console.log(x);
+        this.router.navigate(['/']);
+
 
         //possibly call on the get user information
         this.loginService.getBlogsForUser();

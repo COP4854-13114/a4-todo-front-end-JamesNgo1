@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TodoListsService } from '../../services/todo-lists.service';
 import { userInfo } from '../../model/userinfo';
 import { TodoListInfo } from '../../model/todo-list-info';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ItemsFromMyListComponent } from '../items-from-my-list/items-from-my-list.component';
 
 @Component({
   selector: 'app-mylist',
@@ -11,7 +14,23 @@ import { TodoListInfo } from '../../model/todo-list-info';
 export class MylistComponent implements OnInit {
   userArray:TodoListInfo[] = [];
 
-  constructor(private mylistService:TodoListsService){};
+  constructor(private mylistService:TodoListsService,  private dialog: MatDialog){};
+
+  openDialog(blog: any): void {
+
+    console.log("opening the certain item ???");
+    console.log(blog);
+
+
+    const dialogRef = this.dialog.open(ItemsFromMyListComponent, {
+      width: '700px',
+      data: blog // Pass the blog data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed from mylist');
+    });
+  }
 
   //intilaize declare my array with 
   ngOnInit(): void {
