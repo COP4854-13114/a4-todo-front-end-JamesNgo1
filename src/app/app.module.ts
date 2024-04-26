@@ -33,6 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogContentComponent } from './view/dialog-content/dialog-content.component';
 import { ItemsFromMyListComponent } from './view/items-from-my-list/items-from-my-list.component';
 import { CreateTodoListModalComponent } from './view/create-todo-list-modal/create-todo-list-modal.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 
 
@@ -70,7 +72,9 @@ import { CreateTodoListModalComponent } from './view/create-todo-list-modal/crea
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    
   
   
    

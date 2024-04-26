@@ -1,11 +1,33 @@
 <h2 mat-dialog-title>Todo List item</h2>
 <mat-dialog-content class="mat-typography">
+  <!-- data would be just todo list itself-->
     <h1>title: {{data.title}}</h1>
     <h2>date: {{data.created_at}}</h2>
-    <h2></h2>
+    <h2>list id: {{data.id}}</h2>
+    <h2>Below are the todo items</h2>
+    <h1>check off indicates it being done or true</h1>
 
+    <!--
+         probably put a card around each one and each one is a check box of the ttitle 
+
+         going to grab data for each todo list item
+    
+    -->
+
+    <!-- each blog would be the item-->
     <span *ngFor="let blog of blogsData">
-        <p>{{blog.task}}</p>
+        <mat-card>
+            <p>todo item : {{blog.task}}</p>
+            <p>todo item id : {{blog.id}}</p>
+            <p> status {{blog.completed}}</p>
+            <button *ngIf="blog.completed == false" (click)="updateItem(blog.id,data.id,blog.task)">check off</button>
+            <button (click)="deleteItem(blog.id, data.id)">delete</button>
+            <!-- I blieve where I can edit / update 
+              button to delte todo list item as well
+            
+            -->
+          </mat-card>
+        
     </span>
 
     <!--

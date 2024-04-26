@@ -1,1 +1,18 @@
-<p>create-todo-list-modal works!</p>
+
+<h1>Add New item to : {{data.title}}</h1>
+<mat-form-field class="example-full-width">
+    <mat-label>Todo list item name</mat-label>
+    <input matInput placeholder="todo list item" [(ngModel)]="title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Due date</mat-label>
+    <input matInput type="date" [(ngModel)]="dueDate" value="12-21-2024">
+  </mat-form-field>
+
+ 
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button (click)="addTodoListItem()" mat-button cdkFocusInitial>add todo list item</button>
+  </mat-dialog-actions>

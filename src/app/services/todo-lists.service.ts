@@ -46,17 +46,48 @@ export class TodoListsService {
     
    }
 
+    async updateItemFromTodolist(todolistID:number,itemTodoListID:number,todoListTitle:string){
+      let bodyRequest = {
+        "task":todoListTitle,
+        "due_date": new Date().toString,
+        "completed":true
+      }
+      //https://unfwfspring2024.azurewebsites.net/todo/1/item/1
+      try {
+        let response = await firstValueFrom(this.httpClient.patch(`https://unfwfspring2024.azurewebsites.net/todo/${todolistID}/item/${itemTodoListID}`,bodyRequest,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+        this.snackBar.open(`updated the following todo list id: ${itemTodoListID}`, 'close');
+        this.router.navigate(['']);
+        console.log(response);
+      } catch (error) {
+        this.snackBar.open("issue with update","close");
+      }
 
-   //
-  //  async getTodoListForUser(){
 
-  //   let response  = await firstValueFrom(this.httpClient.get('https://unfwfspring2024.azurewebsites.net/todo/',{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
-  //   console.log(response);
+   }
 
-  //   for(let row of response){
+   async deleteItemFromTodolist(todoListID:number,itemTodoListID:number){
+    try {
+      let response = await firstValueFrom(this.httpClient.delete(`https://unfwfspring2024.azurewebsites.net/todo/${todoListID}/item/${itemTodoListID}`,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+      this.snackBar.open(`deleted the item tod list id: ${itemTodoListID}`, 'close');
+      this.router.navigate(['']);
+      console.log(response);
+    } catch (error) {
+      this.snackBar.open("the item already been deleted","close");
+    }
+   }//END OF DELETING AN ITEM FROM A TODOLIST
 
-  //   }
-  //  }
+
+  
+  async addItemToTodolist(listId:number, task:string, dueDate:string){
+    let bodyRequest = {
+      "task":task,
+      "due_date":dueDate
+    }
+    let response = await firstValueFrom(this.httpClient.post(`https://unfwfspring2024.azurewebsites.net/todo/${listId}/item`,bodyRequest,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+    console.log(response);
+    this.snackBar.open('added todo item','close');
+
+  }
 
   async deleteTodoList(todoListId:number){
    
@@ -70,9 +101,7 @@ export class TodoListsService {
       this.snackBar.open('todo list already deleted needs to be reloaded and maybe removed','close');
       console.error("need to dynamically removed the todo list:", error);
   }
-
-
-  }
+  }//end of todo list delete
 
 
 
@@ -97,15 +126,10 @@ export class TodoListsService {
     }
       
    });
-
-  
     console.log("this is the todolist");
     console.log(this.todoLists);
     //return this.todoLists;
     return this.todoListsAllInfo;
-
-
-
 
    }//end of getTodoList method
 
@@ -305,6 +329,13 @@ export class TodoListsService {
 
   }//end of get user method
 
+
+
+  /**
+   * This method aims to get items from a todo list
+   * @param id 
+   * @returns 
+   */
   async getTodoItems(id:number){
     this.blogsFromATodoList = [];
 
@@ -318,8 +349,6 @@ export class TodoListsService {
 
     console.log("this is the blog array");
     console.log(this.blogsFromATodoList);
-
-
 
     return this.blogsFromATodoList;
   }
