@@ -35,6 +35,7 @@ import { ItemsFromMyListComponent } from './view/items-from-my-list/items-from-m
 import { CreateTodoListModalComponent } from './view/create-todo-list-modal/create-todo-list-modal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ShareModalComponent } from './view/share-modal/share-modal.component';
+import { SharedWithMeComponent } from './view/shared-with-me/shared-with-me.component';
 
 
 
@@ -54,7 +55,8 @@ import { ShareModalComponent } from './view/share-modal/share-modal.component';
     DialogContentComponent,
     ItemsFromMyListComponent,
     CreateTodoListModalComponent,
-    ShareModalComponent
+    ShareModalComponent,
+    SharedWithMeComponent
   ],
   imports: [
     BrowserModule,

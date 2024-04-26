@@ -1,0 +1,14 @@
+<p>shared-with-me works!</p>
+
+<span *ngFor="let blog of userArray">
+    <mat-card>
+        <mat-card-content>Title:{{blog.title}}</mat-card-content>
+        <mat-card-content>Created-at:{{blog.created_at}}</mat-card-content>
+        <mat-card-content>Created-by:{{blog.created_by}}</mat-card-content>
+        <mat-card-content>Public-list-status:{{blog.public_list}}</mat-card-content>
+        <mat-card-content>Blog-id:{{blog.id}}</mat-card-content>
+        <!-- <button mat-button (click)="openDialogAddItem(blog)">Add todo list item</button>
+        <button mat-button (click)="openDialog(blog)">Open Todolist</button> -->
+      </mat-card> 
+    <hr>
+</span>

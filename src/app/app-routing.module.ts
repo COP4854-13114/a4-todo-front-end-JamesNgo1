@@ -6,6 +6,7 @@ import { RegisterComponent } from './view/register/register.component';
 import { MylistComponent } from './view/mylist/mylist.component';
 import { AddblogComponent } from './view/addblog/addblog.component';
 import { noauthGuard } from './guards/noauth.guard';
+import { SharedWithMeComponent } from './view/shared-with-me/shared-with-me.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
     path:'addBlog',
     canActivate:[noauthGuard],
     component:AddblogComponent
+  },
+  {
+    path:'sharedWithMe',
+    canActivate:[noauthGuard],
+    component:SharedWithMeComponent
   }
   
 ];
