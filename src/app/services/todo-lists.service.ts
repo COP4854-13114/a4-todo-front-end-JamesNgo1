@@ -62,10 +62,26 @@ export class TodoListsService {
 
       console.log(error.error.message);
       this.snackBar.open(`issue: ${error.error.message}`,"close");
-      
     }
-    
+   }
 
+/**
+ * goal to remove a user from a list that is shared to 
+ * @param listID 
+ * @param email 
+ */
+   async removeShareTodoList(listID:number,email:string){
+    console.log("removing the todo list");
+    try {
+      let response = await firstValueFrom(this.httpClient.delete(`https://unfwfspring2024.azurewebsites.net/todo/${listID}/share/${email}`,{headers:{'Authorization': `Bearer ${this.token?.token}`}} ));
+      console.log(response);
+      this.snackBar.open(`removed the user ${email}`,"close");
+      
+    } catch (error:any) {
+
+      console.log(error.error.message);
+      this.snackBar.open(`issue: ${error.error.message}`,"close");
+    }
    }
 
 

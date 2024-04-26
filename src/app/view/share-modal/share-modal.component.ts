@@ -27,6 +27,7 @@ export class ShareModalComponent {
   removeShare(todoListID:number){
     console.log(todoListID);
     console.log(this.emailFormControl1.value);
+    this.shareService.removeShareTodoList(todoListID,this.email1);
   }
 
 }
