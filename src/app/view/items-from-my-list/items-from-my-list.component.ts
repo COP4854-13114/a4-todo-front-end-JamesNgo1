@@ -28,8 +28,7 @@ export class ItemsFromMyListComponent implements OnInit {
 
     console.log("this is the onit and below is the current blog data");
     console.log(this.data);
-  }
-;
+  };
 
 
 }
