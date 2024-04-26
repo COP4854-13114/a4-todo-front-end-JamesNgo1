@@ -5,6 +5,8 @@ import { TodoListInfo } from '../../model/todo-list-info';
 import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemsFromMyListComponent } from '../items-from-my-list/items-from-my-list.component';
+import { CreateTodoListModalComponent } from '../create-todo-list-modal/create-todo-list-modal.component';
+//import { todo } from 'node:test';
 
 @Component({
   selector: 'app-mylist',
@@ -15,6 +17,14 @@ export class MylistComponent implements OnInit {
   userArray:TodoListInfo[] = [];
 
   constructor(private mylistService:TodoListsService,  private dialog: MatDialog){};
+
+  deleteTodoList(todoListId:number){
+    console.log("the id is:");
+    console.log(todoListId);
+
+    console.log("attempt delte");
+    this.mylistService.deleteTodoList(todoListId);
+  }
 
   openDialog(blog: any): void {
 
@@ -32,6 +42,30 @@ export class MylistComponent implements OnInit {
     });
   }
 
+  //This modal would have to open to add a task for the specific todo list
+  openDialogAddItem(blog: any): void {
+
+    console.log("opening the certain item ???");
+    console.log(blog);
+
+
+    const dialogRef = this.dialog.open(CreateTodoListModalComponent, {
+      width: '700px',
+      data: blog // Pass the blog data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed from mylist');
+    });
+  }
+
+
+
+
+
+
+
+
   //intilaize declare my array with 
   ngOnInit(): void {
     this.userArray = this.mylistService.todoListAllInfoForUser;
@@ -39,25 +73,11 @@ export class MylistComponent implements OnInit {
     console.log(this.mylistService.userInfoDataSet?.id);
 
 
-    //okay so the list would be public so some list could be false
-
-    //change the array filter to only the ids by the user but have to add the share feature as well
     this.userArray = this.userArray.filter((todolist => todolist.created_by == this.mylistService.userInfoDataSet?.id))
-    // console.log("starting personalized array");
-    // console.log(this.userArray);
-
-
+    console.log("user todo list");
+    console.log(this.userArray);
     console.log("calling function");
-    //this.mylistService.getBlogsForUser();
-
-
-
-
-
-    //replace above and include the new method that includes the get request with token
-
-    //this would then return the array and filter with created by with the userinfo data set 
-    
+   
   }
 
 

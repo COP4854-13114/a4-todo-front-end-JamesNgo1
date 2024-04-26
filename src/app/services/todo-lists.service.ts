@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
-import { firstValueFrom, of } from 'rxjs';
+import { first, firstValueFrom, of } from 'rxjs';
 import { UserToken } from '../model/user-token';
 import { EventEmitter, Output } from '@angular/core';
 import { userInfo } from '../model/userinfo';
@@ -47,8 +47,32 @@ export class TodoListsService {
    }
 
 
+   //
+  //  async getTodoListForUser(){
+
+  //   let response  = await firstValueFrom(this.httpClient.get('https://unfwfspring2024.azurewebsites.net/todo/',{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
+  //   console.log(response);
+
+  //   for(let row of response){
+
+  //   }
+  //  }
+
+  async deleteTodoList(todoListId:number){
+   
+    try {
+      //https://unfwfspring2024.azurewebsites.net/todo/4
+      console.log("being called");
+      let deleteResponse = await firstValueFrom(this.httpClient.delete(`https://unfwfspring2024.azurewebsites.net/todo/${todoListId}`, {headers: {'Authorization': `Bearer ${this.token?.token}`}
+      }));
+      console.log(deleteResponse);
+  } catch (error) {
+      this.snackBar.open('todo list already deleted needs to be reloaded and maybe removed','close');
+      console.error("need to dynamically removed the todo list:", error);
+  }
 
 
+  }
 
 
 
@@ -220,6 +244,14 @@ export class TodoListsService {
     let response = await firstValueFrom(this.httpClient.post('https://unfwfspring2024.azurewebsites.net/todo/',bodyRequest,{headers:{'Authorization': `Bearer ${this.token?.token}`}}));
     console.log(response);
     return response;
+
+    //call the get blog for users or event emitter
+
+    
+
+
+
+
   }//END OF ADD BLOG
 
 
@@ -244,6 +276,7 @@ export class TodoListsService {
   }
   console.log("object array");
   console.log(this.todoListAllInfoForUser);
+
   
 
 

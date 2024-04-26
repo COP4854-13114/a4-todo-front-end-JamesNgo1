@@ -28,17 +28,11 @@ export class AddblogComponent implements OnInit {
   }
 
 
+
+  /**
+   * Call function that add blog
+   */
   addList(){
-    console.log("add blog list called");
-    // console.log("hello world add list");
-    // console.log(this.todoListTitle);
-    //console.log(this.todoListPublicList);
-    //this.todoListTitle = this.todoListFormControl.toString()[0];
-    // console.log(this.todoListTitle);
-
-    // console.log("printing out the login button");
-    // console.log(this.todoListTitle);
-
     if(this.todoListTitle == "" || this.todoListTitle == null || this.todoListTitle == undefined){
       this.snackBar.open("Please enter a title for your list","close");
     }
@@ -46,22 +40,14 @@ export class AddblogComponent implements OnInit {
       this.addblogSerivce.addTodoListTitle = this.todoListTitle; //was todoListTitle
       this.addblogSerivce.addTodoListPublic = this.checked;
       this.addblogSerivce.addBlog();
+      this.snackBar.open('Added the blog','close');
 
-    }
-
-
-    //set the variables for the todo list service to be passed along the body request
-
-
-
-
-    
-  }
+    }  
+  }//END OF ADD BLOG METHOD
 
 
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
-    //this.arr 
+  
     this.newArr= this.addblogSerivce.getTodoList();
   }
 
