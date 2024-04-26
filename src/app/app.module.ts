@@ -34,6 +34,7 @@ import { DialogContentComponent } from './view/dialog-content/dialog-content.com
 import { ItemsFromMyListComponent } from './view/items-from-my-list/items-from-my-list.component';
 import { CreateTodoListModalComponent } from './view/create-todo-list-modal/create-todo-list-modal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ShareModalComponent } from './view/share-modal/share-modal.component';
 
 
 
@@ -52,7 +53,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     AddblogComponent,
     DialogContentComponent,
     ItemsFromMyListComponent,
-    CreateTodoListModalComponent
+    CreateTodoListModalComponent,
+    ShareModalComponent
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,35 @@ export class TodoListsService {
     
    }
 
+
+
+   async shareTodoList(listID:number,email:string){
+    console.log("sharing the todo list");
+    let bodyRequest = {
+      "email":email
+    }
+    try {
+      let response = await firstValueFrom(this.httpClient.post(`https://unfwfspring2024.azurewebsites.net/todo/${listID}/share`, bodyRequest,{headers:{'Authorization': `Bearer ${this.token?.token}`}} ));
+      console.log(response);
+      this.snackBar.open(`shared the user ${email}`,"close");
+      
+    } catch (error:any) {
+
+      console.log(error.error.message);
+      this.snackBar.open(`issue: ${error.error.message}`,"close");
+      
+    }
+    
+
+   }
+
+
+
+
+
+
+
+
     async updateItemFromTodolist(todolistID:number,itemTodoListID:number,todoListTitle:string){
       let bodyRequest = {
         "task":todoListTitle,

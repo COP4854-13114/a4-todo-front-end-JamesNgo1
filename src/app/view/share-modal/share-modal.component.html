@@ -1,0 +1,51 @@
+<p>share-modal works!</p>
+
+<h1>title: {{data.title}}</h1>
+<h1>{{data.id}}</h1>
+
+<!--
+have an input with a share button
+
+have an input that is to remove the share button
+-->
+
+
+
+   
+    <form class="example-form">
+        <h1>shared with</h1>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="email" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+        <button *ngIf="!emailFormControl.hasError('email') && !emailFormControl.hasError('required')" (click)="share(data.id)">share </button>
+      </form>
+
+      <h1>removed shared with</h1>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="email1" type="email" matInput [formControl]="emailFormControl1" placeholder="Ex. pat@example.com">
+          @if (emailFormControl1.hasError('email') && !emailFormControl1.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl1.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+        <button *ngIf="!emailFormControl1.hasError('email') && !emailFormControl1.hasError('required')" (click)="removeShare(data.id)">remove from Share </button>
+      </form>
+
+
+
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <!-- <button  mat-button cdkFocusInitial>add todo list item</button> -->
+  </mat-dialog-actions>

@@ -8,6 +8,7 @@ import { ItemsFromMyListComponent } from '../items-from-my-list/items-from-my-li
 import { CreateTodoListModalComponent } from '../create-todo-list-modal/create-todo-list-modal.component';
 //import { todo } from 'node:test';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { ShareModalComponent } from '../share-modal/share-modal.component';
 @Component({
   selector: 'app-mylist',
   templateUrl: './mylist.component.html',
@@ -50,6 +51,22 @@ export class MylistComponent implements OnInit {
 
 
     const dialogRef = this.dialog.open(CreateTodoListModalComponent, {
+      width: '700px',
+      data: blog // Pass the blog data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed from mylist');
+    });
+  }
+
+  openDialogShare(blog: any): void {
+
+    console.log("opening the certain item ???");
+    console.log(blog);
+
+
+    const dialogRef = this.dialog.open(ShareModalComponent, {
       width: '700px',
       data: blog // Pass the blog data to the dialog
     });
