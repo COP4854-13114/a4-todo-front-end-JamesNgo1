@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
    * have a function that logouts so essential puts token as null
    */
   logout(){
+    window.location.reload();
     this.navbarService.token = null;
     console.log("logout");
     this.router.navigate(['']);

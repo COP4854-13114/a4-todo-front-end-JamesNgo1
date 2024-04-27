@@ -36,6 +36,11 @@ const routes: Routes = [
     path:'sharedWithMe',
     canActivate:[noauthGuard],
     component:SharedWithMeComponent
+  },
+  {
+    path:'logout',
+    canActivate:[noauthGuard],
+    component:HomeComponent
   }
   
 ];

@@ -24,7 +24,40 @@ import { ShareModalComponent } from '../share-modal/share-modal.component';
 export class SharedWithMeComponent implements OnInit {
   userArray:TodoListInfo[] = [];
 
-  constructor(private service:TodoListsService){};
+  constructor(private service:TodoListsService, private dialog: MatDialog){};
+
+  openDialogAddItem(blog: any): void {
+
+    console.log("opening the certain item ???");
+    console.log(blog);
+
+
+    const dialogRef = this.dialog.open(CreateTodoListModalComponent, {
+      width: '700px',
+      data: blog // Pass the blog data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed from mylist');
+    });
+  }
+  openDialog(blog: any): void {
+
+    console.log("opening the certain item ???");
+    console.log(blog);
+
+
+    const dialogRef = this.dialog.open(ItemsFromMyListComponent, {
+      width: '700px',
+      data: blog // Pass the blog data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed from mylist');
+    });
+  }
+
+
 
 
   ngOnInit(): void {
